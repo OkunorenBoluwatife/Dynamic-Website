@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Website Example</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-6" style="background-color: rgb(48, 40, 66); color: rgb(213, 229, 245);">
+    <h1 class="text-3xl font-semibold text-blue-600 text-center mb-8" 
+        style="font-size: 50px; color: rgb(147, 59, 219); text-decoration: underline;">Welcome to Our Dynamic Website</h1>
+
+    <div class="container mx-auto bg-white shadow-md rounded-lg p-8" style="background-color: rgb(62, 62, 75);">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-6" style="color: rgb(191, 205, 219); font-size: 35px;">Interactive Content</h2>
+
+        <div id="user-info" class="mb-6">
+            <p class="text-blue-300 font-semibold" style="font-size: 20px;">Your Name: <span id="user-name"
+                 class="font-medium text-yellow-600">Guest</span></p>
+            <p class="text-blue-300 font-semibold" style="font-size: 20px;">Your Location: <span id="user-location" 
+                class="font-medium text-green-600">Unknown</span></p>
+        </div>
+
+        <button id="change-name-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 
+            rounded focus:outline-none focus:shadow-outline mb-4">Change Your Name</button>
+
+        <div id="dynamic-content" class="bg--100 border-l-4 border-purple-700 text-blueviolet-200 p-4 mb-6" role="alert" 
+            style="background-color:rgb(186, 151, 207); color: rgb(133, 7, 105);">
+            <p class="font-bold">Dynamic Content Example</p>
+            <p>This content is dynamically generated using JavaScript.</p>
+        </div>
+
+            <ul id="item-list" class="list-disc list-inside mb-6">
+            <li class="text-gray-700" style="color: aliceblue;">Matric No: 24/15676</li>
+            <li class="text-gray-700" style="color: aliceblue;">Favorite Meal: White Rice and Stew with Plantain and Chicken</li>
+            <li class="text-gray-700" style="color: aliceblue;">Favorite Car: McLacren P1</li>
+            </ul>
+       
+
+        <button id="add-item-button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 
+            rounded focus:outline-none focus:shadow-outline" style="background-color: blueviolet;">
+            Add Item to List
+        </button>
+    </div>
+
+    <script>
+        // Get user's name and location (simulated)
+        const userNameSpan = document.getElementById("user-name");
+        const userLocationSpan = document.getElementById("user-location");
+
+        // Simulate getting user data
+        const userName = prompt("Please enter your name:");
+                const userLocation = prompt("Please enter your location:");
+
+        if (userName) {
+            userNameSpan.textContent = userName;
+        }
+        if (userLocation) {
+            userLocationSpan.textContent = userLocation;
+        }
+
+        // Change name button functionality
+        const changeNameButton = document.getElementById("change-name-button");
+        changeNameButton.addEventListener("click", () => {
+            const newName = prompt("Enter your new name:");
+            if (newName) {
+                userNameSpan.textContent = newName;
+            }
+        });
+
+        // Add item to list functionality
+        const itemList = document.getElementById("item-list");
+        const addItemButton = document.getElementById("add-item-button");
+        addItemButton.addEventListener("click", () => {
+            const newItemText = prompt("Enter the text for the new list item:");
+            if (newItemText) {
+                const newListItem = document.createElement("li");
+                newListItem.textContent = newItemText;
+                newListItem.className = "text-gray-700"; // Apply the same class as other list items
+                itemList.appendChild(newListItem);
+            }
+        });
+    </script>
+</body>
+</html>
